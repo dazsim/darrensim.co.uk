@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Icon Reference - Darren Sim CV</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .icon-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        .icon-category {
+            background: rgba(26, 26, 58, 0.4);
+            border: 1px solid rgba(184, 212, 255, 0.2);
+            border-radius: 10px;
+            padding: 1.5rem;
+            backdrop-filter: blur(5px);
+        }
+        
+        .category-title {
+            font-size: 1.5rem;
+            font-weight: 400;
+            margin: 0 0 1rem 0;
+            color: #b8d4ff;
+            text-shadow: 0 0 10px rgba(184, 212, 255, 0.3);
+            border-bottom: 1px solid rgba(184, 212, 255, 0.2);
+            padding-bottom: 0.5rem;
+        }
+        
+        .icon-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 0.5rem;
+            margin: 0.5rem 0;
+            border-radius: 5px;
+            transition: all 0.2s ease;
+        }
+        
+        .icon-item:hover {
+            background: rgba(184, 212, 255, 0.1);
+        }
+        
+        .icon-display {
+            font-size: 1.5rem;
+            min-width: 2rem;
+            text-align: center;
+        }
+        
+        .text-options {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+        
+        .text-option {
+            background: rgba(184, 212, 255, 0.1);
+            border: 1px solid rgba(184, 212, 255, 0.2);
+            border-radius: 15px;
+            padding: 0.25rem 0.75rem;
+            font-size: 0.85rem;
+            color: #b8d4ff;
+            font-family: 'Courier New', monospace;
+        }
+        
+        .usage-note {
+            background: rgba(26, 26, 58, 0.6);
+            border: 1px solid rgba(184, 212, 255, 0.3);
+            border-radius: 10px;
+            padding: 1.5rem;
+            margin: 2rem 0;
+            backdrop-filter: blur(10px);
+        }
+        
+        .usage-note h3 {
+            color: #b8d4ff;
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+        
+        .usage-note p {
+            color: #b8d4ff;
+            opacity: 0.9;
+            line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+        
+        .csv-example {
+            background: rgba(10, 10, 26, 0.8);
+            border: 1px solid rgba(184, 212, 255, 0.2);
+            border-radius: 5px;
+            padding: 1rem;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9rem;
+            color: #7ba7ff;
+            overflow-x: auto;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Icon Reference Guide</h1>
+        <p style="text-align: center; margin-top: 1rem; opacity: 0.8;">Available text-to-icon mappings for your projects</p>
+    </header>
+    
+    <main>
+        <div class="usage-note">
+            <h3>How to Use Icons in Your Projects CSV</h3>
+            <p>Simply use any of the text options below in the third column of your <code>projects.csv</code> file. The system will automatically convert them to the appropriate icons.</p>
+            <div class="csv-example">
+Title,URL,Icon
+My Portfolio,https://darrensim.co.uk,CV
+E-commerce Store,https://my-shop.com,Shop
+Mobile App,https://my-app.com,App
+Data Dashboard,https://dashboard.com,Dashboard
+            </div>
+        </div>
+        
+        <div class="icon-grid">
+            <!-- Portfolio & Personal -->
+            <div class="icon-category">
+                <h3 class="category-title">Portfolio & Personal</h3>
+                <div class="icon-item">
+                    <div class="icon-display">📄</div>
+                    <div class="text-options">
+                        <span class="text-option">CV</span>
+                        <span class="text-option">Resume</span>
+                    </div>
+                </div>
+                <div class="icon-item">
+                    <div class="icon-display">🌐</div>
+                    <div class="text-options">
+                        <span class="text-option">Portfolio</span>
+                        <span class="text-option">Website</span>
+                        <span class="text-option">Web</span>
+                    </div>
+                </div>
+                <div class="icon-item">
+                    <div class="icon-display">👤</div>
+                    <div class="text-options">
+                        <span class="text-option">Personal</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- E-commerce & Business -->
+            <div class="icon-category">
+                <h3 class="category-title">E-commerce & Business</h3>
+                <div class="icon-item">
+                    <div class="icon-display">🛒</div>
+                    <div class="text-options">
+                        <span class="text-option">Shop</span>
+                        <span class="text-option">Store</span>
+                        <span class="text-option">Ecommerce</span>
+                    </div>
+                </div>
+                <div class="icon-item">
+                    <div class="icon-display">🏪</div>
+                    <div class="text-options">
+                        <span class="text-option">Marketplace</span>
+                    </div>
+                </div>
+                <div class="icon-item">
+                    <div class="icon-display">💼</div>
+                    <div class="text-options">
+                        <span class="text-option">Business</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Mobile & Apps -->
+            <div class="icon-category">
+                <h3 class="category-title">Mobile & Apps</h3>
+                <div class="icon-item">
+                    <div class="icon-display">📱</div>
+                    <div class="text-options">
+                        <span class="text-option">App</span>
+                        <span class="text-option">Mobile</span>
+                    </div>
+                </div>
+                <div class="icon-item">
+                    <div class="icon-display">🍎</div>
+                    <div class="text-options">
+                        <span class="text-option">iOS</span>
+                    </div>
+                </div>
+                <div class="icon-item">
+                    <div class="icon-display">🤖</div>
+                    <div class="text-options">
+                        <span class="text-option">Android</span>
+                    </div>
+                </div>
+                <div class="icon-item">
+                    <div class="icon-display">🎮</div>
+                    <div class="text-options">
+                        <span class="text-option">Game</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Web & Development -->
+            <div class="icon-category">
+                <h3 class="category-title">Web & Development</h3>
+                <div class="icon-item">
+                    <div class="icon-display">🎨</div>
+                    <div class="text-options">
+                        <span class="text-option">Frontend</span>
+                    </div>
+                </div>
+                <div class="icon-item">
+                    <div class="icon-display">⚙️</div>
+                    <div class="text-options">
+                        <span class="text-option">Backend</span>
+                    </div>
+                </div>
+                <div class="icon-item">
+                    <div class="icon-display">🔌</div>
+                    <div class="text-options">
+                        <span class="text-option">API</span>
+                    </div>
+                </div>
+                <div class="icon-item">
+                    <div class="icon-display">🔧</div>
+                    <div class="text-options">
+                        <span class="text-option">Tool</span>
+                    </div>
+                </div>
+                <div class="icon-item">
+                    <div class="icon-display">📚</div>
+                    <div class="text-options">
+                        <span class="text-option">Library</span>
+                    </div>
+                </div>
+                <div class="icon-item">
+                    <div class="icon-display">🏗️</div>
+                    <div class="text-options">
+                        <span class="text-option">Framework</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Data & Analytics -->
+            <div class="icon-category">
+                <h3 class="category-title">Data & Analytics</h3>
+                <div class="icon-item">
+                    <div class="icon-display">📊</div>
+                    <div class="text-options">
+                        <span class="text-option">Dashboard</span>
+                        <span class="text-option">Chart</span>
+                        <span class="text-option">Metrics</span>
+                    </div>
+                </div>
+                <div class="icon-item">
+                    <div class="icon-display">📈</div>
+                    <div class="text-options">
+                        <span class="text-option">Analytics</span>
+                    </div>
+                </div>
+                <div class="icon-item">
+                    <div class="icon-display">💾</div>
+                    <div class="text-options">
+                        <span class="text-option">Data</span>
+                    </div>
+                </div>
+                <div class="icon-item">
+                    <div class="icon-display">📋</div>
+                    <div class="text-options">
+                        <span class="text-option">Reporting</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Content & CMS -->
+            <div class="icon-category">
+                <h3 class="category-title">Content & CMS</h3>
+                <div class="icon-item">
+                    <div class="icon-display">📝</div>
+                    <div class="text-options">
+                        <span class="text-option">CMS</span>
+                        <span class="text-option">Content</span>
+                    </div>
+                </div>
+                <div class="icon-item">
+                    <div class="icon-display">✍️</div>
+                    <div class="text-options">
+                        <span class="text-option">Blog</span>
+                    </div>
+                </div>
+                <div class="icon-item">
+                    <div class="icon-display">✏️</div>
+                    <div class="text-options">
+                        <span class="text-option">Editor</span>
+                    </div>
+                </div>
+                <div class="icon-item">
+                    <div class="icon-display">📰</div>
+                    <div class="text-options">
+                        <span class="text-option">Publishing</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Social & Communication -->
+            <div class="icon-category">
+                <h3 class="category-title">Social & Communication</h3>
+                <div class="icon-item">
+                    <div class="icon-display">👥</div>
+                    <div class="text-options">
+                        <span class="text-option">Social</span>
+                    </div>
+                </div>
+                <div class="icon-item">
+                    <div class="icon-display">💬</div>
+                    <div class="text-options">
+                        <span class="text-option">Chat</span>
+                    </div>
+                </div>
+                <div class="icon-item">
+                    <div class="icon-display">💌</div>
+                    <div class="text-options">
+                        <span class="text-option">Messaging</span>
+                    </div>
+                </div>
+                <div class="icon-item">
+                    <div class="icon-display">💭</div>
+                    <div class="text-options">
+                        <span class="text-option">Forum</span>
+                    </div>
+                </div>
+                <div class="icon-item">
+                    <div class="icon-display">🏘️</div>
+                    <div class="text-options">
+                        <span class="text-option">Community</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Security & Authentication -->
+            <div class="icon-category">
+                <h3 class="category-title">Security & Authentication</h3>
+                <div class="icon-item">
+                    <div class="icon-display">🔐</div>
+                    <div class="text-options">
+                        <span class="text-option">Security</span>
+                    </div>
+                </div>
+                <div class="icon-item">
+                    <div class="icon-display">🔑</div>
+                    <div class="text-options">
+                        <span class="text-option">Auth</span>
+                    </div>
+                </div>
+                <div class="icon-item">
+                    <div class="icon-display">🚪</div>
+                    <div class="text-options">
+                        <span class="text-option">Login</span>
+                    </div>
+                </div>
+                <div class="icon-item">
+                    <div class="icon-display">🔒</div>
+                    <div class="text-options">
+                        <span class="text-option">Encryption</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Cloud & Infrastructure -->
+            <div class="icon-category">
+                <h3 class="category-title">Cloud & Infrastructure</h3>
+                <div class="icon-item">
+                    <div class="icon-display">🚀</div>
+                    <div class="text-options">
+                        <span class="text-option">SaaS</span>
+                        <span class="text-option">Deployment</span>
+                    </div>
+                </div>
+                <div class="icon-item">
+                    <div class="icon-display">☁️</div>
+                    <div class="text-options">
+                        <span class="text-option">Cloud</span>
+                    </div>
+                </div>
+                <div class="icon-item">
+                    <div class="icon-display">🖥️</div>
+                    <div class="text-options">
+                        <span class="text-option">Server</span>
+                    </div>
+                </div>
+                <div class="icon-item">
+                    <div class="icon-display">🏠</div>
+                    <div class="text-options">
+                        <span class="text-option">Hosting</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- AI & Machine Learning -->
+            <div class="icon-category">
+                <h3 class="category-title">AI & Machine Learning</h3>
+                <div class="icon-item">
+                    <div class="icon-display">🤖</div>
+                    <div class="text-options">
+                        <span class="text-option">AI</span>
+                    </div>
+                </div>
+                <div class="icon-item">
+                    <div class="icon-display">🧠</div>
+                    <div class="text-options">
+                        <span class="text-option">ML</span>
+                        <span class="text-option">Machine Learning</span>
+                        <span class="text-option">Neural</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Other Common Types -->
+            <div class="icon-category">
+                <h3 class="category-title">Other Common Types</h3>
+                <div class="icon-item">
+                    <div class="icon-display">🌤️</div>
+                    <div class="text-options">
+                        <span class="text-option">Weather</span>
+                    </div>
+                </div>
+                <div class="icon-item">
+                    <div class="icon-display">📅</div>
+                    <div class="text-options">
+                        <span class="text-option">Calendar</span>
+                    </div>
+                </div>
+                <div class="icon-item">
+                    <div class="icon-display">✅</div>
+                    <div class="text-options">
+                        <span class="text-option">Todo</span>
+                    </div>
+                </div>
+                <div class="icon-item">
+                    <div class="icon-display">📋</div>
+                    <div class="text-options">
+                        <span class="text-option">Task</span>
+                        <span class="text-option">Project</span>
+                    </div>
+                </div>
+                <div class="icon-item">
+                    <div class="icon-display">🔍</div>
+                    <div class="text-options">
+                        <span class="text-option">Search</span>
+                        <span class="text-option">Filter</span>
+                    </div>
+                </div>
+                <div class="icon-item">
+                    <div class="icon-display">📝</div>
+                    <div class="text-options">
+                        <span class="text-option">Form</span>
+                    </div>
+                </div>
+                <div class="icon-item">
+                    <div class="icon-display">❓</div>
+                    <div class="text-options">
+                        <span class="text-option">Quiz</span>
+                    </div>
+                </div>
+                <div class="icon-item">
+                    <div class="icon-display">🧪</div>
+                    <div class="text-options">
+                        <span class="text-option">Test</span>
+                        <span class="text-option">Beta</span>
+                    </div>
+                </div>
+                <div class="icon-item">
+                    <div class="icon-display">🎬</div>
+                    <div class="text-options">
+                        <span class="text-option">Demo</span>
+                    </div>
+                </div>
+                <div class="icon-item">
+                    <div class="icon-display">🔬</div>
+                    <div class="text-options">
+                        <span class="text-option">Prototype</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="usage-note">
+            <h3>Tips for Using Icons</h3>
+            <p><strong>Case Insensitive:</strong> You can use "CV", "cv", or "Cv" - they all work the same.</p>
+            <p><strong>Partial Matching:</strong> The system is smart enough to match "Mobile App" to the 📱 icon.</p>
+            <p><strong>Fallback:</strong> If no match is found, a random icon will be assigned automatically.</p>
+            <p><strong>Easy Updates:</strong> Just change the text in your CSV file to get different icons!</p>
+        </div>
+    </main>
+</body>
+</html> 

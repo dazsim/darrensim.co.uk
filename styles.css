@@ -1,0 +1,212 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #0a0a1a 0%, #1a1a3a 100%);
+    color: #b8d4ff;
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+header {
+    text-align: center;
+    padding: 2rem 0;
+    background: rgba(26, 26, 58, 0.8);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(184, 212, 255, 0.2);
+}
+
+h1 {
+    font-size: 3rem;
+    font-weight: 300;
+    letter-spacing: 2px;
+    text-shadow: 0 0 20px rgba(184, 212, 255, 0.5);
+    background: linear-gradient(45deg, #b8d4ff, #7ba7ff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+main {
+    padding: 2rem;
+}
+
+.skills-section {
+    margin-bottom: 4rem;
+}
+
+.skills-section h2 {
+    font-size: 2.5rem;
+    font-weight: 300;
+    text-shadow: 0 0 15px rgba(184, 212, 255, 0.4);
+    background: linear-gradient(45deg, #b8d4ff, #7ba7ff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+.skills-list {
+    display: block;
+}
+
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.skill-item {
+    background: rgba(26, 26, 58, 0.4);
+    border: 1px solid rgba(184, 212, 255, 0.2);
+    border-radius: 10px;
+    padding: 1.5rem;
+    text-align: center;
+    backdrop-filter: blur(5px);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.skill-item::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(184, 212, 255, 0.1), transparent);
+    transition: left 0.5s ease;
+}
+
+.skill-item:hover::before {
+    left: 100%;
+}
+
+.skill-item:hover {
+    border-color: rgba(184, 212, 255, 0.4);
+    box-shadow: 0 0 25px rgba(184, 212, 255, 0.15);
+    transform: translateY(-3px);
+}
+
+.skill-item h3 {
+    font-size: 1.3rem;
+    font-weight: 400;
+    margin: 0;
+    color: #b8d4ff;
+    text-shadow: 0 0 10px rgba(184, 212, 255, 0.3);
+}
+
+.projects {
+    padding: 2rem 0;
+}
+
+.projects h2 {
+    font-size: 2.5rem;
+    font-weight: 300;
+    text-shadow: 0 0 15px rgba(184, 212, 255, 0.4);
+    background: linear-gradient(45deg, #b8d4ff, #7ba7ff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.project-card {
+    background: rgba(26, 26, 58, 0.4);
+    border: 1px solid rgba(184, 212, 255, 0.2);
+    border-radius: 10px;
+    padding: 2rem;
+    text-align: center;
+    backdrop-filter: blur(5px);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    text-decoration: none;
+    color: inherit;
+    display: block;
+}
+
+.project-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(184, 212, 255, 0.1), transparent);
+    transition: left 0.5s ease;
+}
+
+.project-card:hover::before {
+    left: 100%;
+}
+
+.project-card:hover {
+    border-color: rgba(184, 212, 255, 0.4);
+    box-shadow: 0 0 25px rgba(184, 212, 255, 0.15);
+    transform: translateY(-3px);
+}
+
+.project-card h3 {
+    font-size: 1.4rem;
+    font-weight: 400;
+    margin: 0 0 1rem 0;
+    color: #b8d4ff;
+    text-shadow: 0 0 10px rgba(184, 212, 255, 0.3);
+}
+
+.project-card .project-url {
+    font-size: 0.9rem;
+    opacity: 0.7;
+    word-break: break-all;
+    color: #7ba7ff;
+}
+
+.project-card .project-icon {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    opacity: 0.8;
+}
+
+footer {
+    text-align: center;
+    padding: 2rem;
+    margin-top: 4rem;
+    background: rgba(26, 26, 58, 0.8);
+    backdrop-filter: blur(10px);
+    border-top: 1px solid rgba(184, 212, 255, 0.2);
+}
+
+footer p {
+    color: #b8d4ff;
+    font-size: 1rem;
+    opacity: 0.8;
+    text-shadow: 0 0 10px rgba(184, 212, 255, 0.3);
+}
+
+@media (max-width: 768px) {
+    h1 {
+        font-size: 2rem;
+    }
+    
+    main {
+        padding: 1rem;
+    }
+} 

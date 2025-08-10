@@ -1,0 +1,28 @@
+PHP 8
+MySQL
+MSSQL
+Azure
+JavaScript
+React
+Node.js
+Python
+HTML/CSS
+TypeScript
+Vue.js
+Express.js
+MongoDB
+PostgreSQL
+Git
+Docker
+REST APIs
+Webpack
+CI/CD
+Agile
+UI/UX
+Responsive Design
+Performance
+Security
+Testing
+Deployment
+Technical Support
+Godot
