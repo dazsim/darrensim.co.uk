@@ -52,10 +52,59 @@ class SkillsManager {
             }
             const csvText = await response.text();
             const projects = this.parseCSV(csvText);
-            this.displayProjects(projects);
+            
+            // Check URL health for all projects
+            const projectsWithHealth = await this.checkAllProjectUrls(projects);
+            this.displayProjects(projectsWithHealth);
         } catch (error) {
             this.displayProjects([]);
         }
+    }
+    
+    async checkUrlHealth(url) {
+        try {
+            console.log(`Checking URL health for: ${url}`);
+            
+            // Use PHP endpoint to check URL health via curl
+            const response = await fetch(`check-url.php?url=${encodeURIComponent(url)}`);
+            
+            if (!response.ok) {
+                console.log(`PHP endpoint error for ${url}:`, response.status);
+                return { isHealthy: false, error: `PHP endpoint error: ${response.status}` };
+            }
+            
+            const result = await response.json();
+            console.log(`Health check result for ${url}:`, result);
+            
+            if (result.error) {
+                console.log(`URL ${url} has error:`, result.error);
+                return { isHealthy: false, error: result.error };
+            }
+            
+            // Return the result from PHP
+            return {
+                isHealthy: result.isHealthy,
+                status: result.status,
+                error: result.error
+            };
+            
+        } catch (error) {
+            console.log(`URL ${url} check failed:`, error.message);
+            return { isHealthy: false, error: error.message };
+        }
+    }
+    
+    async checkAllProjectUrls(projects) {
+        const healthChecks = await Promise.allSettled(
+            projects.map(async (project) => {
+                const health = await this.checkUrlHealth(project.url);
+                return { ...project, health };
+            })
+        );
+        
+        return healthChecks.map(result => 
+            result.status === 'fulfilled' ? result.value : { ...result.reason, health: { isHealthy: false, error: 'Check failed' } }
+        );
     }
     
     parseCSV(csvText) {
@@ -229,18 +278,31 @@ class SkillsManager {
         projectsGrid.innerHTML = '';
         
         projects.forEach((project, index) => {
-            const projectCard = document.createElement('a');
-            projectCard.href = project.url;
-            projectCard.target = '_blank';
-            projectCard.rel = 'noopener noreferrer';
+            const projectCard = document.createElement('div');
             projectCard.className = 'project-card';
             
-            const icon = this.getIconFromText(project.icon);
-            projectCard.innerHTML = `
-                <div class="project-icon">${icon}</div>
-                <h3>${project.title}</h3>
-                <div class="project-url">${project.url}</div>
-            `;
+            // Check if the project URL is healthy
+            if (project.health && !project.health.isHealthy) {
+                // Broken link - add broken-link class and make it unclickable
+                projectCard.classList.add('broken-link');
+                projectCard.innerHTML = `
+                    <div class="project-icon">${this.getIconFromText(project.icon)}</div>
+                    <h3>${project.title}</h3>
+                    <div class="project-url">${project.url}</div>
+                    <div class="project-status">Status: Unreachable</div>
+                `;
+            } else {
+                // Healthy link - make it clickable
+                projectCard.style.cursor = 'pointer';
+                projectCard.addEventListener('click', () => {
+                    window.open(project.url, '_blank', 'noopener,noreferrer');
+                });
+                projectCard.innerHTML = `
+                    <div class="project-icon">${this.getIconFromText(project.icon)}</div>
+                    <h3>${project.title}</h3>
+                    <div class="project-url">${project.url}</div>
+                `;
+            }
             
             projectsGrid.appendChild(projectCard);
         });
