@@ -52,59 +52,10 @@ class SkillsManager {
             }
             const csvText = await response.text();
             const projects = this.parseCSV(csvText);
-            
-            // Check URL health for all projects
-            const projectsWithHealth = await this.checkAllProjectUrls(projects);
-            this.displayProjects(projectsWithHealth);
+            this.displayProjects(projects);
         } catch (error) {
             this.displayProjects([]);
         }
-    }
-    
-    async checkUrlHealth(url) {
-        try {
-            console.log(`Checking URL health for: ${url}`);
-            
-            // Use PHP endpoint to check URL health via curl
-            const response = await fetch(`check-url.php?url=${encodeURIComponent(url)}`);
-            
-            if (!response.ok) {
-                console.log(`PHP endpoint error for ${url}:`, response.status);
-                return { isHealthy: false, error: `PHP endpoint error: ${response.status}` };
-            }
-            
-            const result = await response.json();
-            console.log(`Health check result for ${url}:`, result);
-            
-            if (result.error) {
-                console.log(`URL ${url} has error:`, result.error);
-                return { isHealthy: false, error: result.error };
-            }
-            
-            // Return the result from PHP
-            return {
-                isHealthy: result.isHealthy,
-                status: result.status,
-                error: result.error
-            };
-            
-        } catch (error) {
-            console.log(`URL ${url} check failed:`, error.message);
-            return { isHealthy: false, error: error.message };
-        }
-    }
-    
-    async checkAllProjectUrls(projects) {
-        const healthChecks = await Promise.allSettled(
-            projects.map(async (project) => {
-                const health = await this.checkUrlHealth(project.url);
-                return { ...project, health };
-            })
-        );
-        
-        return healthChecks.map(result => 
-            result.status === 'fulfilled' ? result.value : { ...result.reason, health: { isHealthy: false, error: 'Check failed' } }
-        );
     }
     
     parseCSV(csvText) {
@@ -133,18 +84,20 @@ class SkillsManager {
             }
             values.push(current.trim()); // Add the last value
             
-            if (values.length >= 3) {
+            if (values.length >= 4) {
                 projects.push({
                     title: values[0].trim(),
                     url: values[1].trim(),
-                    icon: values[2].trim()
+                    icon: values[2].trim(),
+                    live: values[3].trim().toLowerCase() === 'true'
                 });
-            } else if (values.length >= 2) {
-                // Fallback for projects without custom icons
+            } else if (values.length >= 3) {
+                // Fallback for projects without live status
                 projects.push({
                     title: values[0].trim(),
                     url: values[1].trim(),
-                    icon: this.getRandomIcon()
+                    icon: values[2].trim(),
+                    live: false // Default to false if not specified
                 });
             }
         }
@@ -281,18 +234,18 @@ class SkillsManager {
             const projectCard = document.createElement('div');
             projectCard.className = 'project-card';
             
-            // Check if the project URL is healthy
-            if (project.health && !project.health.isHealthy) {
-                // Broken link - add broken-link class and make it unclickable
+            // Check if the project is live
+            if (!project.live) {
+                // Dead link - add broken-link class and make it unclickable
                 projectCard.classList.add('broken-link');
                 projectCard.innerHTML = `
                     <div class="project-icon">${this.getIconFromText(project.icon)}</div>
                     <h3>${project.title}</h3>
                     <div class="project-url">${project.url}</div>
-                    <div class="project-status">Status: Unreachable</div>
+                    <div class="project-status">Status: Not Live</div>
                 `;
             } else {
-                // Healthy link - make it clickable
+                // Live link - make it clickable
                 projectCard.style.cursor = 'pointer';
                 projectCard.addEventListener('click', () => {
                     window.open(project.url, '_blank', 'noopener,noreferrer');
